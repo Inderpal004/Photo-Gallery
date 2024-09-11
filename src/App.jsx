@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import './App.css';
 
 function App() {
@@ -71,7 +73,7 @@ function App() {
       <div className="image-gallery">
         {data.map((image, index) => (
           <div className="pics" onClick={() => handleShow(image)} key={index}>
-            <img src={image.src.original} alt={image.alt} loading="lazy" />
+            <LazyLoadImage effect="blur" src={image.src.original} alt={image.alt} />
           </div>
         ))}
       </div>
@@ -80,7 +82,7 @@ function App() {
 
       {showImage && selectedPhoto && (
         <div className="image-page">
-          <img src={selectedPhoto.src.original} className="image-page-img" alt={selectedPhoto.alt} />
+          <LazyLoadImage effect="blur" src={selectedPhoto.src.original} className="image-page-img" alt={selectedPhoto.alt} />
           <button onClick={() => setShowImage(false)} className='close-btn'>X</button>
         </div>
       )}
